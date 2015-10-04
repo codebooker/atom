@@ -1,0 +1,182 @@
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!DOCTYPE html>
+<html lang="en-US">
+    <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Atom the Clock!
+        </title><!-- Behavioral Meta Data -->
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Core Meta Data -->
+        <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAaWlpAP///wDb29sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEAAAAAAAAAAAABAQMCAQIDAQEAAAAAAAABAwECAgECAgEDAQAAAAABAwICAgIBAgICAgMBAAAAAQECAgICAgICAgIBAQAAAQMCAgICAgICAgICAgMBAAECAgICAgICAgICAgICAQABAQEBAgICAAAAAAABAQEAAQICAgICAgACAgICAgIBAAEDAgICAgIAAgICAgIDAQAAAQECAgICAAICAgIBAQAAAAEDAgICAgACAgICAwEAAAAAAQMBAgIAAgIBAwEAAAAAAAABAQMCAAIDAQEAAAAAAAAAAAABAQEBAQAAAAAAAP//AAD4PwAA4A8AAMAHAACAAwAAgAMAAAABAAAAAQAAAAEAAAABAAAAAQAAgAMAAIADAADABwAA4A8AAPg/AAA=" rel="icon" type="image/x-icon" />
+        
+        <!-- CSS -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,900' rel='stylesheet' type='text/css'><!-- Styles -->
+        <link href="css/loader.css" rel="stylesheet" type="text/css">
+        <link href="css/normalize.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <!--[if lt IE 9]>
+            <link rel="stylesheet" type="text/css" href="css/ie.css" />
+        <![endif]-->
+        <!-- Javascript -->
+
+        <script src="js/jquery.js"></script>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+    <script type="text/javascript" src="jquery-1.2.6.min.js"></script>
+    
+    <style type="text/css">
+        * {
+        	margin: 0;
+        	padding: 0;
+        }
+        
+        #clock {
+        	position: relative;
+        	width: 600px;
+        	height: 600px;
+        	margin: 20px auto 0 auto;
+        	background: url(images/clockface.png);
+        	list-style: none;
+        	}
+        
+        #sec, #min, #hour {
+        	position: absolute;
+        	width: 30px;
+        	height: 600px;
+        	top: 0px;
+        	left: 285px;
+        	}
+        
+        #sec {
+        	background: url(images/sechand.png);
+        	z-index: 3;
+           	}
+           
+        #min {
+        	background: url(images/minhand.png);
+        	z-index: 2;
+           	}
+           
+        #hour {
+        	background: url(images/hourhand.png);
+        	z-index: 1;
+           	}
+           	
+        p {
+            text-align: center; 
+            padding: 10px 0 0 0;
+            }
+    </style>
+    
+    <script type="text/javascript">
+    
+        $(document).ready(function() {
+         
+              setInterval( function() {
+              var seconds = new Date().getSeconds();
+              var sdegree = seconds * 6;
+              var srotate = "rotate(" + sdegree + "deg)";
+              
+              $("#sec").css({"-moz-transform" : srotate, "-webkit-transform" : srotate});
+                  
+              }, 1000 );
+              
+         
+              setInterval( function() {
+              var hours = new Date().getHours();
+              var mins = new Date().getMinutes();
+              var hdegree = hours * 30 + (mins / 2);
+              var hrotate = "rotate(" + hdegree + "deg)";
+              
+              $("#hour").css({"-moz-transform" : hrotate, "-webkit-transform" : hrotate});
+                  
+              }, 1000 );
+        
+        
+              setInterval( function() {
+              var mins = new Date().getMinutes();
+              var mdegree = mins * 6;
+              var mrotate = "rotate(" + mdegree + "deg)";
+              
+              $("#min").css({"-moz-transform" : mrotate, "-webkit-transform" : mrotate});
+                  
+              }, 1000 );
+         
+        }); 
+    
+    </script>
+    </head>
+    
+    <body>
+        <body background="bg.jpg">
+        <div class="preloader">
+            <div class="loading">
+                <h2>
+                    Loading...
+                </h2>
+                <span class="progress"></span>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" id="scene">
+                <li class="layer" data-depth="0.00">
+                </li>
+                <!-- BG -->
+
+                <li class="layer" data-depth="0.10">
+                    <div class="background">
+                    </div>
+                </li>
+
+                <!-- Hero -->
+                <li class="layer" data-depth="0.30">
+                    
+                   <div>
+                    <br><br>
+                       <ul id="clock">	
+                        <li id="sec"></li>
+                        <li id="hour"></li>
+                        <li id="min"></li>
+                    </ul>
+                    </div>
+                </li>
+
+                <p class="top-title">The Current Time is</p>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <p class="top-title">
+                            And All is Well...
+                            <br><br>
+                            Praise be to Atom, Keeper of Time and Peace!
+                        </p>
+                    </div>
+                <!-- Contact -->
+
+                <li class="layer" data-depth="0.20">
+                    <div class="contact">
+                        <ul class="icons">
+                            <li>
+                                <a class="github" href="https://github.com/codebooker"><i class="fa fa-github"></i></a>
+                            </li>
+
+                        </ul>
+                        Copyright 2015 -
+                        <a class="mail" href="mailto:jack@djspecx.com?subject=Hi%20Jack!">Jack Tawes</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Javascript -->
+        <script src="js/plugins.js"></script> 
+        <script src="js/jquery.countdown.min.js"></script> 
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
